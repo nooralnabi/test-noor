@@ -1,0 +1,78 @@
+#Abstract Factory patterns work around a super-factory which creates other factories
+ #This factory is also called as factory of factories. This type of design pattern comes under creational pattern as this
+ #pattern provides one of the best ways to create an object.
+
+
+ #the pattern solve Time tracking and productivity improvement software with screenshots and website and applications.
+
+
+class Computer
+  attr_accessor :name
+  attr_accessor :cost
+  attr_accessor :model
+
+  def initialize(name,cost, model)
+    @name = name
+    @cost = cost
+    @model = model
+  end
+  
+  def motherboard
+  end
+  
+  def cpu 
+  end
+  
+  def operating_system
+end
+end
+class Hp < Computer 
+  
+      attr_accessor :capacity
+      def initialize(name,cost=0, model,capacity)
+      @capacity = capacity
+      super(name,cost,model)
+    end
+   
+   def motherboard
+     
+     puts "motherboard type  #{name} this motherboard cost in iraq#{cost} and the best version is #{model} "
+   end
+   
+  def cpu 
+    puts" hp #{name} in this model Contains of cpu #{model} and his ghz is #{capacity}"
+  end 
+
+   def operating_system
+     puts "hp #{name} the version of os #{model} and the cost of this version #{cost} "
+   end
+ end
+
+
+class Dell < Computer 
+  
+      attr_accessor :size
+      def initialize(name,cost=0, model,size)
+      @size = size
+      super(name,cost,model)
+    end
+   
+   def drive
+     
+     puts "dell drive VGA Card#{name} download size is #{size} and the best version is #{model} "
+   end
+   
+  def cpu 
+    puts" dell #{name} in this model Contains of cpu #{model} and his ghz is #{capacity}"
+  end 
+
+   def operating_system
+     puts "dell #{name} the version of os #{model} and the cost of this version #{cost} "
+   end
+ end
+
+computer1 = Hp.new "Intel",200,"corei7", "2.4"
+computer1.cpu
+
+dell1 = Dell.new " Nvidia",100,"9400GT","13mb"
+dell1.drive

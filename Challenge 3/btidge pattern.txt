@@ -1,0 +1,51 @@
+
+#Bridge pattern
+#The idea behind a Bridge is to place a physical separation between the interface of a given type of object and its implementation. In languages in which the type system gets in the way,
+
+#the goal of bridge pattern Decouples an abstraction from it's implementation so that the two can vary independently
+
+
+class Material 
+  def make
+  end
+end
+
+class MyMaterial1 < Material 
+  def make
+    puts "make: my material 1"
+  end
+end
+
+class MyMaterial2 < Material 
+  def make
+    puts "make: my material 2"
+  end
+end
+
+
+
+class Product 
+  def taste
+  end
+end
+
+
+
+class MyProduct < Product 
+  def initialize(material)  # injecting implementor
+    @material = material
+  end
+
+  def taste
+    @material.make
+  end
+
+end
+
+material1 = MyMaterial1.new
+
+product1 = MyProduct.new(MyMaterial1.new)
+product2 = MyProduct.new(MyMaterial2.new)
+
+product1.taste
+product2.taste

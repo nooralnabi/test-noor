@@ -1,0 +1,33 @@
+#DECORATOR pattern
+#The decorator design pattern allows for features to be added dynamically to an existing object.
+
+# the pattern solve Attaches additional responsibilities to an object dynamically. 
+# Provides a flexible alternative to subclassing for extending functionality.
+
+
+
+class Component
+  def operation
+  end
+end
+
+class ConcreteComponent < Component
+  def operation
+    puts "my component"
+  end
+end
+require 'forwardable'
+
+class ForwardableDecorator
+  extend Forwardable
+
+  def_delegators :@component, :operation
+
+  def initialize(component)
+    @component = component
+  end
+end
+
+component = ForwardableDecorator.new(ConcreteComponent.new)
+component.operation
+puts '-------'
